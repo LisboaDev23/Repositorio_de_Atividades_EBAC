@@ -7,9 +7,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "TB_PRODUTO")
 public class Produto {
-
-
-
     @Id
     @GeneratedValue(generator = "PRODUTO_SEQ", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "PRODUTO_SEQ", sequenceName = "SQ_PRODUTOS", initialValue = 1,allocationSize = 1)
@@ -27,19 +24,19 @@ public class Produto {
     @Column(name = "DATA_FABRICACAO", nullable = false)
     private String dataFabricacao;
 
-//    @ManyToOne
-//    @JoinColumn(name = "ID_PRODUTO_FK",
-//    foreignKey = @ForeignKey(name = "FK_FABRICA_PRODUTO"),
-//    referencedColumnName = "ID", nullable = false)
-//    private Fabrica fabrica;
-//
-//    public Fabrica getFabrica() {
-//        return fabrica;
-//    }
-//
-//    public void setFabrica(Fabrica fabrica) {
-//        this.fabrica = fabrica;
-//    }
+    @ManyToOne
+    @JoinColumn(name = "ID_FABRICA_FK",
+    foreignKey = @ForeignKey(name = "FK_FABRICA_PRODUTO"),
+    referencedColumnName = "id", nullable = false)
+    private Fabrica fabrica;
+
+    public Fabrica getFabrica() {
+        return fabrica;
+    }
+
+    public void setFabrica(Fabrica fabrica) {
+        this.fabrica = fabrica;
+    }
 
     public Long getId() {
         return id;

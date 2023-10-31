@@ -16,10 +16,7 @@ public class Empresario {
     @Column(name = "CNPJ",nullable = false,unique = true)
     private Long cnpj;
 
-    @OneToOne
-    @JoinColumn(name = "id_empresario_fk",
-    foreignKey = @ForeignKey(name = "fk_fabrica_empresario"),
-    referencedColumnName = "id", nullable = false)
+    @OneToOne(mappedBy = "empresario")
     private Fabrica fabrica;
 
     public Long getId() {

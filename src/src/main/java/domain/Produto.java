@@ -2,6 +2,7 @@ package src.main.java.domain;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TB_PRODUTO")
@@ -31,7 +32,7 @@ public class Produto {
 //    foreignKey = @ForeignKey(name = "FK_FABRICA_PRODUTO"),
 //    referencedColumnName = "ID", nullable = false)
 //    private Fabrica fabrica;
-
+//
 //    public Fabrica getFabrica() {
 //        return fabrica;
 //    }
@@ -89,5 +90,20 @@ public class Produto {
                 ", preco=" + preco +
                 ", dataFabricacao='" + dataFabricacao + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return Double.compare(produto.preco, preco) == 0 &&
+                Objects.equals(nome, produto.nome) &&
+                Objects.equals(codigo, produto.codigo) &&
+                Objects.equals(dataFabricacao, produto.dataFabricacao);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, codigo, preco, dataFabricacao);
     }
 }

@@ -1,7 +1,7 @@
 package src.main.java.dao;
 
 import src.main.java.domain.Empresario;
-import src.main.java.domain.Fabrica;
+import src.main.java.domain.Produto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,55 +12,57 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class FabricaDAO implements IFabricaDAO{
+public class EmpresarioDAO implements IEmpresarioDAO {
+
 
     @Override
-    public Fabrica cadastrar(Fabrica fabrica) {
+    public Empresario cadastrar(Empresario empresario) {
         EntityManagerFactory entityManagerFactory =
                 Persistence.createEntityManagerFactory("GabrielExemploJPA");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
-        entityManager.persist(fabrica);
+        entityManager.persist(empresario);
         entityManager.getTransaction().commit();
 
         entityManager.close();
         entityManagerFactory.close();
-        return fabrica;
+        return empresario;
     }
 
     @Override
-    public Boolean excluir(Fabrica fabrica) {
+    public Boolean excluir(Empresario empresario) {
         EntityManagerFactory entityManagerFactory =
                 Persistence.createEntityManagerFactory("GabrielExemploJPA");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
-        fabrica = entityManager.merge(fabrica);
-        entityManager.remove(fabrica);
+        empresario = entityManager.merge(empresario);
+        entityManager.remove(empresario);
         entityManager.getTransaction().commit();
 
         entityManager.close();
         entityManagerFactory.close();
-        return true;    }
+        return true;
+    }
 
     @Override
-    public List<Fabrica> buscarTodos() {
+    public List<Empresario> buscarTodos() {
         EntityManagerFactory entityManagerFactory =
                 Persistence.createEntityManagerFactory("GabrielExemploJPA");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Fabrica> query = builder.createQuery(Fabrica.class);
-        Root<Fabrica> root = query.from(Fabrica.class);
+        CriteriaQuery<Empresario> query = builder.createQuery(Empresario.class);
+        Root<Empresario> root = query.from(Empresario.class);
         query.select(root);
 
-        TypedQuery<Fabrica> typedQuery =
+        TypedQuery<Empresario> typedQuery =
                 entityManager.createQuery(query);
-        List<Fabrica> fabricas = typedQuery.getResultList();
+        List<Empresario> empresarios = typedQuery.getResultList();
 
         entityManager.close();
         entityManagerFactory.close();
-        return fabricas;
+        return empresarios;
     }
 }

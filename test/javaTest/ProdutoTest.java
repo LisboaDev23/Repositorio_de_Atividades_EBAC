@@ -48,13 +48,13 @@ public class ProdutoTest {
         public void buscarTodosTest(){
             Produto produto = new Produto();
             produto.setNome("Notebook DELL G15 version 2");
-            produto.setCodigo(5L);
+            produto.setCodigo(859L);
             produto.setDataFabricacao("08/07/2023");
             produto.setPreco(5800D);
 
             Produto produto2 = new Produto();
             produto2.setNome("Notebook I3 Lenovo Gaming");
-            produto2.setCodigo(98L);
+            produto2.setCodigo(98888L);
             produto2.setDataFabricacao("14/08/2023");
             produto2.setPreco(3800D);
 

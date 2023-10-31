@@ -4,8 +4,8 @@ import javax.persistence.*;
 import javax.swing.event.ListDataEvent;
 import java.util.List;
 
-//@Entity
-//@Table(name = "TB_FABRICA")
+@Entity
+@Table(name = "TB_FABRICA")
 public class Fabrica {
     @Id
     @GeneratedValue(generator = "FABRICA_SEQ", strategy = GenerationType.SEQUENCE)
@@ -15,9 +15,12 @@ public class Fabrica {
     @Column(name = "NOME",nullable = false,unique = true)
     private String nome;
 
+    @OneToOne(mappedBy = "fabrica")
+    private Empresario empresario;
+
 //    @OneToMany(mappedBy = "fabrica")//Uma fábrica, produz vários produtos, no mappedBy vou dizer de onde vou referenciar e fazer a ligação do to Many, nesse caso é a propriedade fabrica la na classe Produto
 //    private List<Produto> produtos;
-
+//
 //    public List<Produto> getProdutos() {
 //        return produtos;
 //    }
@@ -40,5 +43,13 @@ public class Fabrica {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Empresario getEmpresario() {
+        return empresario;
+    }
+
+    public void setEmpresario(Empresario empresario) {
+        this.empresario = empresario;
     }
 }

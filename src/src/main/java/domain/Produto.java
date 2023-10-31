@@ -26,6 +26,20 @@ public class Produto {
     @Column(name = "DATA_FABRICACAO", nullable = false)
     private String dataFabricacao;
 
+//    @ManyToOne
+//    @JoinColumn(name = "ID_PRODUTO_FK",
+//    foreignKey = @ForeignKey(name = "FK_FABRICA_PRODUTO"),
+//    referencedColumnName = "ID", nullable = false)
+//    private Fabrica fabrica;
+
+//    public Fabrica getFabrica() {
+//        return fabrica;
+//    }
+//
+//    public void setFabrica(Fabrica fabrica) {
+//        this.fabrica = fabrica;
+//    }
+
     public Long getId() {
         return id;
     }
@@ -64,5 +78,16 @@ public class Produto {
 
     public void setDataFabricacao(String dataFabricacao) {
         this.dataFabricacao = dataFabricacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", codigo=" + codigo +
+                ", preco=" + preco +
+                ", dataFabricacao='" + dataFabricacao + '\'' +
+                '}';
     }
 }

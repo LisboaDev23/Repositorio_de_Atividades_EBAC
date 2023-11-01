@@ -25,17 +25,14 @@ public class FabricaTest {
     }
     @Test
     public void cadastrar(){
-        Empresario gabriel = criandoEmpresario(19134960309L);
-        Fabrica fabrica = criandoFabrica(gabriel);
-        gabriel.setFabrica(fabrica);
-        gabriel = empresarioDAO.cadastrar(gabriel);
+        Fabrica fabrica = criandoEmpresario(19134960309L);
         fabrica = fabricaDAO.cadastrar(fabrica);
         assertNotNull(fabrica);
         assertNotNull(fabrica.getId());
 
     }
 
-    private Fabrica criandoFabrica(Empresario empresario){
+    private static Fabrica criandoFabrica(Empresario empresario){
         Fabrica fabrica = new Fabrica();
         fabrica.setEmpresario(empresario);
         fabrica.setNome("Fábrica de Chocolates");
@@ -43,7 +40,7 @@ public class FabricaTest {
         return fabrica;
     }
 
-    private List<Produto> addProdutosFabrica(Fabrica fabrica){
+    private static List<Produto> addProdutosFabrica(Fabrica fabrica){
         List<Produto>produtos = new ArrayList<>();
         Produto neuguebauer = new Produto();
         neuguebauer.setNome("Chocolate Neuguebauer");
@@ -63,10 +60,12 @@ public class FabricaTest {
         return produtos;
     }
 
-    private Empresario criandoEmpresario(Long cnpj){
+    private Fabrica criandoEmpresario(Long cnpj){
         Empresario gabriel = new Empresario();
         gabriel.setNome("Gabriel Pereira Lisboa");
         gabriel.setCnpj(cnpj);
-        return gabriel;
+        Fabrica fabrica = criandoFabrica(gabriel);
+        gabriel.setFabrica(fabrica);
+        return fabrica;
     }
 }

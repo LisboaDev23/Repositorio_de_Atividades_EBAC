@@ -25,9 +25,8 @@ public class Produto {
     private String dataFabricacao;
 
     @ManyToOne
-    @JoinColumn(name = "ID_FABRICA_FK",
-    foreignKey = @ForeignKey(name = "FK_FABRICA_PRODUTO"),
-    referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "fabrica_id",foreignKey = @ForeignKey(name = "fk_produto_fabrica"),
+            referencedColumnName = "id",nullable = false)
     private Fabrica fabrica;
 
     public Fabrica getFabrica() {

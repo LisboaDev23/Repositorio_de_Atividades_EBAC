@@ -14,11 +14,10 @@ public class Fabrica {
 
     @Column(name = "NOME",nullable = false,unique = true)
     private String nome;
-
     @OneToOne
-    @JoinColumn(name = "id_empresario_fk",
-            foreignKey = @ForeignKey(name = "fk_fabrica_empresario"),
-            referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "empresario_id",
+        foreignKey = @ForeignKey(name = "fk_fabrica_empresario"),
+        referencedColumnName = "id", nullable = false)
     private Empresario empresario;
 
     @OneToMany(mappedBy = "fabrica")//Uma fábrica, produz vários produtos, no mappedBy vou dizer de onde vou referenciar e fazer a ligação do to Many, nesse caso é a propriedade fabrica la na classe Produto

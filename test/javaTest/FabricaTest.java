@@ -1,10 +1,7 @@
 package javaTest;
 
 import org.junit.Test;
-import src.main.java.dao.EmpresarioDAO;
-import src.main.java.dao.FabricaDAO;
-import src.main.java.dao.IEmpresarioDAO;
-import src.main.java.dao.IFabricaDAO;
+import src.main.java.dao.*;
 import src.main.java.domain.Empresario;
 import src.main.java.domain.Fabrica;
 import src.main.java.domain.Produto;
@@ -18,35 +15,40 @@ public class FabricaTest {
 
     private IFabricaDAO fabricaDAO;
     private IEmpresarioDAO empresarioDAO;
+    private IProdutoDAO produtoDAO;
 
     public FabricaTest(){
         fabricaDAO = new FabricaDAO();
         empresarioDAO = new EmpresarioDAO();
+        produtoDAO = new ProdutoDAO();
+
     }
     @Test
     public void cadastrar(){
-        Fabrica fabrica = criandoEmpresario(19134960309L);
+//        Empresario gabriel = criandoEmpresario();
+        Fabrica fabrica = criandoFabrica();
+//        gabriel = empresarioDAO.cadastrar(gabriel);
         fabrica = fabricaDAO.cadastrar(fabrica);
         assertNotNull(fabrica);
         assertNotNull(fabrica.getId());
 
     }
 
-    private static Fabrica criandoFabrica(Empresario empresario){
+    private static Fabrica criandoFabrica(){
         Fabrica fabrica = new Fabrica();
-        fabrica.setEmpresario(empresario);
+//        fabrica.setEmpresario(como passar o empresário já cadastrado // tentar chamar o metodo consultar passando o id do empresario);
         fabrica.setNome("Fábrica de Chocolates");
-        fabrica.setProdutos(addProdutosFabrica(fabrica));
+//        fabrica.setProdutos(addProdutosFabrica(fabrica));
         return fabrica;
     }
 
-    private static List<Produto> addProdutosFabrica(Fabrica fabrica){
+    private static List<Produto> addProdutosFabrica(){
         List<Produto>produtos = new ArrayList<>();
         Produto neuguebauer = new Produto();
         neuguebauer.setNome("Chocolate Neuguebauer");
         neuguebauer.setPreco(4.99);
         neuguebauer.setCodigo(98958L);
-        neuguebauer.setFabrica(fabrica);
+//        neuguebauer.setFabrica(fabrica);
         neuguebauer.setDataFabricacao("05/12/2022");
         produtos.add(neuguebauer);
 
@@ -54,18 +56,16 @@ public class FabricaTest {
         lacta.setNome("Chocolate Lacta");
         lacta.setPreco(7.99);
         lacta.setCodigo(95895L);
-        lacta.setFabrica(fabrica);
+//        lacta.setFabrica(fabrica);
         lacta.setDataFabricacao("02/08/2022");
         produtos.add(lacta);
         return produtos;
     }
 
-    private Fabrica criandoEmpresario(Long cnpj){
+    private Empresario criandoEmpresario(){
         Empresario gabriel = new Empresario();
         gabriel.setNome("Gabriel Pereira Lisboa");
-        gabriel.setCnpj(cnpj);
-        Fabrica fabrica = criandoFabrica(gabriel);
-        gabriel.setFabrica(fabrica);
-        return fabrica;
+        gabriel.setCnpj(19134960309L);
+        return gabriel;
     }
 }

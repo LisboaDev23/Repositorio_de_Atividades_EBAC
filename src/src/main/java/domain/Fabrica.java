@@ -14,22 +14,22 @@ public class Fabrica {
 
     @Column(name = "NOME",nullable = false,unique = true)
     private String nome;
-    @OneToOne
-    @JoinColumn(name = "empresario_id",
-        foreignKey = @ForeignKey(name = "fk_fabrica_empresario"),
-        referencedColumnName = "id", nullable = false)
-    private Empresario empresario;
+//    @OneToOne
+//    @JoinColumn(name = "empresario_id",
+//        foreignKey = @ForeignKey(name = "fk_fabrica_empresario"),
+//        referencedColumnName = "id", nullable = false)
+//    private Empresario empresario;
 
-    @OneToMany(mappedBy = "fabrica")//Uma fábrica, produz vários produtos, no mappedBy vou dizer de onde vou referenciar e fazer a ligação do to Many, nesse caso é a propriedade fabrica la na classe Produto
-    private List<Produto> produtos;
+//    @OneToMany(mappedBy = "fabrica")//Uma fábrica, produz vários produtos, no mappedBy vou dizer de onde vou referenciar e fazer a ligação do to Many, nesse caso é a propriedade fabrica la na classe Produto
+//    private List<Produto> produtos;
 
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
+//    public List<Produto> getProdutos() {
+//        return produtos;
+//    }
+//
+//    public void setProdutos(List<Produto> produtos) {
+//        this.produtos = produtos;
+//    }
 
     public Long getId() {
         return id;
@@ -47,11 +47,11 @@ public class Fabrica {
         this.nome = nome;
     }
 
-    public Empresario getEmpresario() {
-        return empresario;
-    }
-
-    public void setEmpresario(Empresario empresario) {
-        this.empresario = empresario;
-    }
+//    public Empresario getEmpresario() {
+//        return empresario;
+//    }
+//
+//    public void setEmpresario(Empresario empresario) {
+//        this.empresario = empresario;
+//    }
 }

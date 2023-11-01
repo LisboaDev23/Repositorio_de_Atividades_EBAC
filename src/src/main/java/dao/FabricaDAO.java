@@ -29,6 +29,25 @@ public class FabricaDAO implements IFabricaDAO{
         return fabrica;
     }
 
+//    public Empresario consultar(Long idEmpresario){
+//        EntityManagerFactory entityManagerFactory =
+//                Persistence.createEntityManagerFactory("GabrielExemploJPA");
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//
+//        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<Fabrica> query = builder.createQuery(Fabrica.class);
+//        Root<Fabrica> root = query.from(Fabrica.class);
+//        query.select(root);
+//
+//        TypedQuery<Fabrica> typedQuery =
+//                entityManager.createQuery(query);
+//        Integer fabricas = typedQuery.getFirstResult();
+//        Empresario empresario = fabricas;
+//
+//        entityManager.close();
+//        entityManagerFactory.close();
+//    }
+
     @Override
     public Boolean excluir(Fabrica fabrica) {
         EntityManagerFactory entityManagerFactory =

@@ -24,18 +24,18 @@ public class Produto {
     @Column(name = "DATA_FABRICACAO", nullable = false)
     private String dataFabricacao;
 
-    @ManyToOne
-    @JoinColumn(name = "fabrica_id",foreignKey = @ForeignKey(name = "fk_produto_fabrica"),
-            referencedColumnName = "id",nullable = false)
-    private Fabrica fabrica;
+//    @ManyToOne
+//    @JoinColumn(name = "fabrica_id",foreignKey = @ForeignKey(name = "fk_produto_fabrica"),
+//            referencedColumnName = "id",nullable = false)
+//    private Fabrica fabrica;
 
-    public Fabrica getFabrica() {
-        return fabrica;
-    }
-
-    public void setFabrica(Fabrica fabrica) {
-        this.fabrica = fabrica;
-    }
+//    public Fabrica getFabrica() {
+//        return fabrica;
+//    }
+//
+//    public void setFabrica(Fabrica fabrica) {
+//        this.fabrica = fabrica;
+//    }
 
     public Long getId() {
         return id;

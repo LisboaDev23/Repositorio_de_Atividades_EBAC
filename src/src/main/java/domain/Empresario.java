@@ -16,8 +16,8 @@ public class Empresario {
     @Column(name = "CNPJ",nullable = false,unique = true)
     private Long cnpj;
 
-    @OneToOne(mappedBy = "empresario")
-    private Fabrica fabrica;
+//    @OneToOne(mappedBy = "empresario")
+//    private Fabrica fabrica;
 
     public Long getId() {
         return id;
@@ -43,11 +43,11 @@ public class Empresario {
         this.cnpj = cnpj;
     }
 
-    public Fabrica getFabrica() {
-        return fabrica;
-    }
-
-    public void setFabrica(Fabrica fabrica) {
-        this.fabrica = fabrica;
-    }
+//    public Fabrica getFabrica() {
+//        return fabrica;
+//    }
+//
+//    public void setFabrica(Fabrica fabrica) {
+//        this.fabrica = fabrica;
+//    }
 }

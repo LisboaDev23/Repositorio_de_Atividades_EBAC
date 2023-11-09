@@ -1,11 +1,14 @@
 package domain;
 
 import javax.persistence.*;
+
+import dao.persistence.Persistente;
+
 import java.util.Objects;
 
 @Entity
 @Table(name = "TB_ACESSORIO")
-public class Acessorio {
+public class Acessorio implements Persistente {
     @Id
     @GeneratedValue(generator = "ACESSORIO_SEQUENCE", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "ACESSORIO_SEQUENCE",sequenceName = "SQ_ACESSORIO",initialValue = 1,allocationSize = 1)

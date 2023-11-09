@@ -1,16 +1,26 @@
 package domain;
 
-import javax.persistence.*;
-
-import dao.persistence.Persistente;
-
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import dao.persistence.Persistente;
+
 @Entity
 @Table(name = "TB_CARRO")
-public class Carro implements Persistente {
-    @Id
+public class Carro2 implements Persistente{
+	@Id
     @GeneratedValue(generator = "CARRO_SEQUENCE", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "CARRO_SEQUENCE",sequenceName = "SQ_CARRO",initialValue = 1,allocationSize = 1)
     private Long id;
@@ -85,20 +95,25 @@ public class Carro implements Persistente {
         this.acessorios = acessorios;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Carro carro = (Carro) o;
-        return Double.compare(carro.preco,preco) ==0 &&
-                Objects.equals(nome, carro.nome) &&
-                Objects.equals(codigo, carro.codigo) &&
-                Objects.equals(anoFabricacao, carro.anoFabricacao) &&
-                Objects.equals(marca, carro.marca);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(anoFabricacao, codigo, marca, nome, preco);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome, codigo, preco, anoFabricacao, marca);
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Carro2 other = (Carro2) obj;
+		return Objects.equals(anoFabricacao, other.anoFabricacao) && Objects.equals(codigo, other.codigo)
+				&& Objects.equals(marca, other.marca) && Objects.equals(nome, other.nome)
+				&& Objects.equals(preco, other.preco);
+	}
+    
+    
+
 }

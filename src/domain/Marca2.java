@@ -1,15 +1,22 @@
 package domain;
 
-import javax.persistence.*;
-
-import dao.persistence.Persistente;
-
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import dao.persistence.Persistente;
+
 @Entity
 @Table(name = "TB_MARCA")
-public class Marca implements Persistente {
+public class Marca2 implements Persistente {
     @Id
     @GeneratedValue(generator = "MARCA_SEQUENCE", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "MARCA_SEQUENCE",sequenceName = "SQ_MARCA",initialValue = 1,allocationSize = 1)
@@ -20,7 +27,7 @@ public class Marca implements Persistente {
     private String pais;
     @Column(name = "AN0_CRIAÇÃO",nullable = false)
     private Integer anoCriacao;
-    @Column(name = "RANK_MERCADO") 
+    @Column(name = "RANK_MERCADO")
     private Integer rankMercado;
     @OneToMany(mappedBy = "marca")
     private List<Carro>carros;
@@ -83,19 +90,42 @@ public class Marca implements Persistente {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Marca marca = (Marca) o;
-        return Objects.equals(nome,marca.nome) &&
-                Objects.equals(pais,marca.pais)&&
-                Objects.equals(anoCriacao,marca.anoCriacao)&&
-                Objects.equals(rankMercado,marca.rankMercado);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(anoCriacao, nome, pais, rankMercado);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome, pais, anoCriacao, rankMercado);
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Marca2 other = (Marca2) obj;
+		return Objects.equals(anoCriacao, other.anoCriacao) && Objects.equals(nome, other.nome)
+				&& Objects.equals(pais, other.pais) && Objects.equals(rankMercado, other.rankMercado);
+	}
+
+    
+    
+    
+    
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Marca marca = (Marca) o;
+//        return Objects.equals(nome,marca.getNome()) &&
+//                Objects.equals(pais,marca.getPais())&&
+//                Objects.equals(anoCriacao,marca.getAnoCriacao())&&
+//                Objects.equals(rankMercado,marca.rankMercado);
+//    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(nome, pais, anoCriacao, rankMercado);
+//    }
+
 }

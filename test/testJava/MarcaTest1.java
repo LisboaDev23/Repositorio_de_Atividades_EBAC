@@ -9,6 +9,7 @@ import org.junit.Test;
 import dao.IMarcaDAO1;
 import dao.MarcaDAO1;
 import dao.MarcaDAO2;
+import dao.MarcaDAO3;
 import domain.Marca;
 import domain.Marca2;
 import exception.DAOException;
@@ -17,10 +18,12 @@ import exception.TipoChaveNaoEncontradaException;
 public class MarcaTest1 {
 	private IMarcaDAO1<Marca> marcaDAO;
 	private IMarcaDAO1<Marca> marcaDAO2;
+	private IMarcaDAO1<Marca2> marcaDAO3;
 	
 	public MarcaTest1() {
 		this.marcaDAO = new MarcaDAO1();
 		this.marcaDAO2 = new MarcaDAO2();
+		this.marcaDAO3 = new MarcaDAO3();
 	}
 	
 	@Test
@@ -38,12 +41,23 @@ public class MarcaTest1 {
         marca1.setAnoCriacao(1939);
         marca1.setRankMercado(1);
         marca1 = marcaDAO2.cadastrar(marca1);
+        
+        Marca2 marca2 = new Marca2();
+        marca2.setNome("FERRARI");
+        marca2.setPais("ITALIA");
+        marca2.setAnoCriacao(1939);
+        marca2.setRankMercado(1);
+        marca2 = marcaDAO3.cadastrar(marca2);
+
 
         assertNotNull(marca);
         assertNotNull(marca.getId());
         
         assertNotNull(marca1);
         assertNotNull(marca1.getId());
+        
+        assertNotNull(marca2);
+        assertNotNull(marca2.getId());
         
         marcaDAO.excluir(marca);
         marcaDAO2.excluir(marca1);
@@ -66,11 +80,20 @@ public class MarcaTest1 {
         marca1.setRankMercado(1);
         marca1 = marcaDAO2.cadastrar(marca1);
         
+        Marca2 marca2 = new Marca2();
+        marca2.setNome("FERRARI");
+        marca2.setPais("ITALIA");
+        marca2.setAnoCriacao(1939);
+        marca2.setRankMercado(1);
+        marca2 = marcaDAO3.cadastrar(marca2);
+        
         Boolean verdade = marcaDAO.excluir(marca);
         Boolean verdade2 = marcaDAO2.excluir(marca1);
+        Boolean verdade3 = marcaDAO3.excluir(marca2);
         
         assertTrue(verdade);
         assertTrue(verdade2);
+        assertTrue(verdade3);
         
 	}
 }

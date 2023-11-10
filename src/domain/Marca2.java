@@ -18,6 +18,7 @@ import dao.persistence.Persistente;
 @Table(name = "TB_MARCA")
 public class Marca2 implements Persistente {
     @Id
+    //@GeneratedValue(strategy=GenerationType.AUTO)
     @GeneratedValue(generator = "MARCA_SEQUENCE", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "MARCA_SEQUENCE",sequenceName = "SQ_MARCA",initialValue = 1,allocationSize = 1)
     private Long id;

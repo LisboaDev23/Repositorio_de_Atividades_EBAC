@@ -21,6 +21,7 @@ import dao.persistence.Persistente;
 @Table(name = "TB_CARRO")
 public class Carro2 implements Persistente{
 	@Id
+	//@GeneratedValue(strategy=GenerationType.AUTO)
     @GeneratedValue(generator = "CARRO_SEQUENCE", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "CARRO_SEQUENCE",sequenceName = "SQ_CARRO",initialValue = 1,allocationSize = 1)
     private Long id;

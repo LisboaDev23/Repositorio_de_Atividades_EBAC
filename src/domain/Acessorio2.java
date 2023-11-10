@@ -18,7 +18,10 @@ import dao.persistence.Persistente;
 @Entity
 @Table(name = "TB_ACESSORIO")
 public class Acessorio2 implements Persistente{
-	 @Id
+	    
+	
+		@Id
+		//@GeneratedValue(strategy=GenerationType.AUTO)
 	    @GeneratedValue(generator = "ACESSORIO_SEQUENCE", strategy = GenerationType.SEQUENCE)
 	    @SequenceGenerator(name = "ACESSORIO_SEQUENCE",sequenceName = "SQ_ACESSORIO",initialValue = 1,allocationSize = 1)
 	    private Long id;

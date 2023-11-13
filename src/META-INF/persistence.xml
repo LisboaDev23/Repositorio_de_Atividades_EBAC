@@ -5,8 +5,7 @@
         <class>dao.domain.Marca</class>
         <class>dao.domain.Carro</class>
         <class>dao.domain.Acessorio</class>
-        
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+      
         
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -34,7 +33,6 @@
         <class>dao.domain.Carro</class>
         <class>dao.domain.Acessorio</class>
         
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -64,7 +62,6 @@
         <class>dao.domain.Carro2</class>
         <class>dao.domain.Acessorio2</class>
 		
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		<properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> <!-- DB Driver -->

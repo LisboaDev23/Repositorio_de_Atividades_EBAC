@@ -1,0 +1,13 @@
+server:
+  port: 8081
+  wait-time-in-ms-when-sync-empty: 3000
+
+spring:
+  spring:
+    profiles:
+      active: native
+  data:
+      mongodb:
+        uri: mongodb://gbLisboa:16833200@127.0.0.1:27017/db_aplicacao?authSource=16833200&retryWrites=true&w=majority
+        database: cliente
+        auto-index-creation: true
